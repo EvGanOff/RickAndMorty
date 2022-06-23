@@ -29,7 +29,7 @@ class CharacterCell: UICollectionViewCell {
 
     func set(characterName: Characters) {
         // Переписать в презентер
-        let char = presenter?.characters
+        //let char = presenter?.characters
         charectersNameLabel.text = characterName.name
         charectersSpecieLabel.text = characterName.species
         charectersGenderLabel.text = characterName.gender

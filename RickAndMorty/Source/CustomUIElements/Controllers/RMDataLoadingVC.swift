@@ -16,6 +16,7 @@ class RMDataLoadingVC: UIViewController {
     private lazy var activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.style = .large
+        activityIndicator.color = .systemPink
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
 
         return activityIndicator
@@ -24,7 +25,7 @@ class RMDataLoadingVC: UIViewController {
     private func configureContainerView() {
         containerView = UIView(frame: view.bounds)
         containerView.backgroundColor = .systemBackground
-        containerView.alpha = 0
+        containerView.alpha = 1
         containerView.translatesAutoresizingMaskIntoConstraints = false
     }
 

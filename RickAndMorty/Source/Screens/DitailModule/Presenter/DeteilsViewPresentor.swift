@@ -10,12 +10,15 @@ import Foundation
 // MARK: - Output Protocol -
 
 protocol DetailsViewProtocol: AnyObject {
-   // func showPersonInformation(_ person: Person)
-    func updatePersonInformation()
+    func succes()
+    func failure(error: RMErrors)
 }
 
 protocol DetailsViewPresenterProtocol {
     init(view: DetailsViewProtocol, networkManager: NetworkManager)
+    var characters: Characters? { get }
+    func getCherecters()
+
 }
 
 class DeteilsViewPresentor: DetailsViewPresenterProtocol {
@@ -24,8 +27,9 @@ class DeteilsViewPresentor: DetailsViewPresenterProtocol {
 
     weak var view: DetailsViewProtocol?
     var networkManager: NetworkManager?
-    var characters: [Characters]?
+    var characters: Characters?
     var coordinator: MainCoordinator?
+    var namber = 1
 
     // MARK: - Required Initialization -
 
@@ -34,7 +38,19 @@ class DeteilsViewPresentor: DetailsViewPresenterProtocol {
         self.networkManager = networkManager
     }
 
-
-
-
+    func getCherecters() {
+        namber = characters?.id ?? 1
+        networkManager?.getCharactersInfo(number: namber, completed: { [weak self] result in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let character):
+                    self.characters? = character
+                    self.view?.succes()
+                case .failure(let error):
+                    self.view?.failure(error: error)
+                }
+            }
+        })
+    }
 }

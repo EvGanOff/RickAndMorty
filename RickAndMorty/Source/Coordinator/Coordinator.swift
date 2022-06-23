@@ -25,6 +25,7 @@ class Coordinator: Coordinatable {
 
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
+        navigationController.navigationBar.tintColor = .systemPink
     }
 
     // MARK: - Public Methods -

@@ -17,7 +17,7 @@ protocol MainViewProtocol: AnyObject {
 // MARK: - Input Protocol -
 
 protocol MainViewPresenterProtocol: AnyObject {
-    init(view: MainViewProtocol, networkManager: NetworkManager)
+    init(view: MainViewProtocol, networkManager: NetworkManagerProtocol)
     func getCherecters()
     func getMoreCherecters()
     func selectPersonAt(index: Int)
@@ -27,14 +27,16 @@ protocol MainViewPresenterProtocol: AnyObject {
 class MainViewPresenter: MainViewPresenterProtocol {
 
     weak var view: MainViewProtocol?
-    
+
     var characters: [Characters]?
-    var networkManager: NetworkManager?
+    var networkManager: NetworkManagerProtocol?
     var coordinator: MainCoordinator?
     var characterName: String? = nil
     var page = 1
 
-    required init(view: MainViewProtocol, networkManager: NetworkManager) {
+    init() {}
+
+    required init(view: MainViewProtocol, networkManager: NetworkManagerProtocol) {
         self.view = view
         self.networkManager = networkManager
         getCherecters()
@@ -73,14 +75,12 @@ class MainViewPresenter: MainViewPresenterProtocol {
 
     func selectPersonAt(index: Int) {
         guard let person = characters else { return }
-        coordinator?.pushTo(.detail(person))
+        coordinator?.pushTo(.detail(person[index]))
         networkManager?.getCharacters(page: page, completion: { [weak self] result in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 switch result {
-                case .success(let character):
-                    self.characters = character
-                    //print("\(character)")
+                case .success(_):
                     self.view?.succes()
                 case .failure(let error):
                     self.view?.failure(error: error)

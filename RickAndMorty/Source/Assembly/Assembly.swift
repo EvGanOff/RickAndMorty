@@ -9,7 +9,7 @@ import UIKit
 
 protocol MainAssembly {
     static func createMainModule(_ coordinator: MainCoordinator) -> UIViewController
-    static func createDetailsModule(_ model: [Characters]?, _ coordinator: MainCoordinator) -> UIViewController
+    static func createDetailsModule(_ model: Characters?, _ coordinator: MainCoordinator) -> UIViewController
 }
 
 class MainScreenBuilder: MainAssembly {
@@ -26,7 +26,7 @@ class MainScreenBuilder: MainAssembly {
         return view
     }
 
-    static func createDetailsModule(_ model: [Characters]?, _ coordinator: MainCoordinator) -> UIViewController {
+    static func createDetailsModule(_ model: Characters?, _ coordinator: MainCoordinator) -> UIViewController {
         let view = DitailCharactersVC()
         let networkManager = NetworkManager()
         let presenter = DeteilsViewPresentor(view: view, networkManager: networkManager)
