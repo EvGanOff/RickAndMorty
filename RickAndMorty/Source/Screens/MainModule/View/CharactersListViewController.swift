@@ -25,21 +25,19 @@ class CharactersListViewController: RMDataLoadingVC {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: true)
+ 
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Rick and Morty"
         configureViewController()
         configureCollectionCell()
-
     }
 
     private func configureViewController() {
+        title = "Rick and Morty"
         view.backgroundColor = .systemBackground
         navigationController?.navigationBar.prefersLargeTitles = true
-        let nextButton = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(addButtonTapped))
-        navigationItem.rightBarButtonItem = nextButton
     }
 
     private func configureCollectionCell() {
@@ -50,11 +48,6 @@ class CharactersListViewController: RMDataLoadingVC {
         collectionView.register(CharacterCell.self, forCellWithReuseIdentifier: CharacterCell.userID)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(collectionView)
-    }
-
-    @objc
-    func addButtonTapped() {
-        guard hasMoreCharacters, !isLoadingMoreCharacters else { return }
     }
 }
 
@@ -74,9 +67,6 @@ extension CharactersListViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-
-        let cherecters = presenter?.characters
-
         presenter?.selectPersonAt(index: indexPath.row)
     }
 

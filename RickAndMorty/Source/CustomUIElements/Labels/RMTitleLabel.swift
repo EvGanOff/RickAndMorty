@@ -29,5 +29,6 @@ class RMTitleLabel: UILabel {
         adjustsFontSizeToFitWidth = true
         lineBreakMode = .byCharWrapping
         translatesAutoresizingMaskIntoConstraints = false
+        text = "Some Text"
     }
 }

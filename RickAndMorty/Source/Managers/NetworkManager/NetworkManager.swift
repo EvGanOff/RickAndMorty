@@ -9,7 +9,7 @@ import UIKit
 
 protocol NetworkManagerProtocol: AnyObject {
     func getCharacters(page: Int, completion: @escaping (Result<[Characters], RMErrors>) -> Void)
-    func getCharactersInfo(completed: @escaping (Result<[Characters], RMErrors>) -> Void)
+    func getCharactersInfo(number: Int, completed: @escaping (Result<Characters, RMErrors>) -> Void)
     func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void)
 
 }
@@ -64,8 +64,40 @@ class NetworkManager: NetworkManagerProtocol {
 
     }
 
-    func getCharactersInfo(completed: @escaping (Result<[Characters], RMErrors>) -> Void) {
+    func getCharactersInfo(number: Int, completed: @escaping (Result<Characters, RMErrors>) -> Void) {
+        let endpoint = baseURL + "/character/\(number)"
+        // https://rickandmortyapi.com/api/character/2
 
+        guard let url = URL(string: endpoint) else {
+            completed(.failure(.invalidData))
+            return
+        }
+
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if let _ = error {
+                completed(.failure(.unableToComplete))
+                return
+            }
+
+            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                completed(.failure(.unableToComplete))
+                return
+            }
+
+            guard let data = data else {
+                completed(.failure(.invalidData))
+                return
+            }
+
+            do {
+                let characters = try self.decoder.decode(Characters.self, from: data)
+                completed(.success(characters))
+            } catch {
+                completed(.failure(.invalidData))
+            }
+        }
+
+        task.resume()
     }
 
     func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {

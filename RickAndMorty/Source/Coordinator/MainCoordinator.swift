@@ -9,7 +9,7 @@ import UIKit
 
 enum Destination {
     case main([Characters])
-    case detail([Characters])
+    case detail(Characters)
 }
 
 protocol DetailCoordinating: AnyObject {
