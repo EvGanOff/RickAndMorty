@@ -18,7 +18,6 @@
 		5E69E80B28588D9E00146205 /* RMBodyLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E80A28588D9E00146205 /* RMBodyLabel.swift */; };
 		5E69E80D28588F4900146205 /* RMTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E80C28588F4900146205 /* RMTitleLabel.swift */; };
 		5E69E8102858907000146205 /* RMSecondaryTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E80F2858907000146205 /* RMSecondaryTitleLabel.swift */; };
-		5E69E812285891B300146205 /* RMItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E811285891B300146205 /* RMItemInfoView.swift */; };
 		5E69E8142858920200146205 /* RMAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E8132858920200146205 /* RMAvatarImageView.swift */; };
 		5E69E816285892F600146205 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E815285892F600146205 /* Constants.swift */; };
 		5E69E819285895C200146205 /* RMButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E69E818285895C200146205 /* RMButton.swift */; };
@@ -66,7 +65,6 @@
 		5E69E80A28588D9E00146205 /* RMBodyLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMBodyLabel.swift; sourceTree = "<group>"; };
 		5E69E80C28588F4900146205 /* RMTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMTitleLabel.swift; sourceTree = "<group>"; };
 		5E69E80F2858907000146205 /* RMSecondaryTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSecondaryTitleLabel.swift; sourceTree = "<group>"; };
-		5E69E811285891B300146205 /* RMItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMItemInfoView.swift; sourceTree = "<group>"; };
 		5E69E8132858920200146205 /* RMAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMAvatarImageView.swift; sourceTree = "<group>"; };
 		5E69E815285892F600146205 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5E69E818285895C200146205 /* RMButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMButton.swift; sourceTree = "<group>"; };
@@ -173,12 +171,12 @@
 		5E69E7FD2858864B00146205 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				5E69E7FB2858863000146205 /* App */,
+				5E69E82B2859021300146205 /* Utilities */,
 				5EF9B8CC2859388F00911484 /* Extentions */,
 				5EF9B8C32859238800911484 /* Managers */,
 				5E69E8372859057D00146205 /* Assembly */,
 				5E69E830285904CE00146205 /* Coordinator */,
-				5E69E7FB2858863000146205 /* App */,
-				5E69E82B2859021300146205 /* Utilities */,
 				5E69E80928588D6D00146205 /* CustomUIElements */,
 				5E69E80828588D4F00146205 /* Screens */,
 			);
@@ -235,7 +233,6 @@
 		5E69E81B2858980800146205 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				5E69E811285891B300146205 /* RMItemInfoView.swift */,
 				5E69E81F28589BE500146205 /* RMEmptyStateView.swift */,
 				5EF9B8C828592D4000911484 /* RMAlertConteinerView.swift */,
 			);
@@ -505,7 +502,6 @@
 				5EF9B8D2285944FC00911484 /* CharacterCell.swift in Sources */,
 				5E69E81E2858986E00146205 /* RMDataLoadingVC.swift in Sources */,
 				5EF9B8D02859441E00911484 /* UIHelper.swift in Sources */,
-				5E69E812285891B300146205 /* RMItemInfoView.swift in Sources */,
 				5E69E816285892F600146205 /* Constants.swift in Sources */,
 				5E69E80B28588D9E00146205 /* RMBodyLabel.swift in Sources */,
 				5EF9B8CE285938B900911484 /* ExtentionViewController.swift in Sources */,

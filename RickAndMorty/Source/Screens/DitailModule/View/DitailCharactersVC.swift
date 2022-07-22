@@ -24,6 +24,8 @@ class DitailCharactersVC: RMDataLoadingVC {
     let charectersSpecieLabel = RMBodyLabel(textAlignment: .center)
     let charecterStatus = RMBodyLabel(textAlignment: .center)
 
+    let charecherLocation = RMSecondaryTitleLabel(fontSize: 16)
+
     var presenter: DetailsViewPresenterProtocol?
 
     override func viewDidLoad() {
@@ -88,6 +90,8 @@ class DitailCharactersVC: RMDataLoadingVC {
             charecterStatus.heightAnchor.constraint(equalToConstant: Matrics.viewsHeightAnchor),
             charecterStatus.widthAnchor.constraint(equalToConstant: Matrics.viewsWidthAnchor),
 
+            /// Локация
+
         ])
     }
 
@@ -106,6 +110,8 @@ extension DitailCharactersVC: DetailsViewProtocol {
         charectersGenderLabel.text = presenter?.characters?.gender
         charectersSpecieLabel.text = presenter?.characters?.species
         charecterStatus.text = presenter?.characters?.status
+
+        presenter?.characters?.location.forEach({ charecherLocation.text = $0.name })
 
         // Пофиксить синглтон
         NetworkManager.shared.downloadImage(from: presenter?.characters?.image ?? "", completion: { [weak self] image in

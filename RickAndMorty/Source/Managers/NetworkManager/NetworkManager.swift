@@ -61,7 +61,6 @@ class NetworkManager: NetworkManagerProtocol {
         }
 
         task.resume()
-
     }
 
     func getCharactersInfo(number: Int, completed: @escaping (Result<Characters, RMErrors>) -> Void) {

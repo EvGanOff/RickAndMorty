@@ -20,4 +20,10 @@ struct Characters: Codable, Hashable {
     var gender: String
     var image: String?
     var episode: [String]
+
+    var location: [Location]
+}
+
+struct Location: Codable, Hashable {
+    var name: String
 }

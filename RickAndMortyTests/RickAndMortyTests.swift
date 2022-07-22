@@ -42,6 +42,10 @@ class MockNetworkService: NetworkManagerProtocol {
     func downloadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
 
     }
+
+    func getCharactersInfo(number: Int, completed: @escaping (Result<Characters, RMErrors>) -> Void) {
+
+    }
 }
 
 class MainViewPresenterTest: XCTestCase {
@@ -62,7 +66,7 @@ class MainViewPresenterTest: XCTestCase {
     }
 
     func testGetSuccesCharacters() {
-        let char = Characters(name: "Foo", species: "Too", gender: "Baz", episode: ["Vaz"])
+        let char = Characters(id: 123, name: "Foo", species: "Too", gender: "Baz", episode: ["Vaz"])
         charechters.append(char)
 
         view = MockView()
@@ -85,7 +89,7 @@ class MainViewPresenterTest: XCTestCase {
     }
 
     func testGetFailurCharacters() {
-        let char = Characters(name: "Foo", species: "Too", gender: "Baz", episode: ["Vaz"])
+        let char = Characters(id: 123, name: "Foo", species: "Too", gender: "Baz", episode: ["Vaz"])
         charechters.append(char)
 
         view = MockView()
