@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol MainAssembly {
+protocol MainAssemblyProtocol {
     static func createMainModule(_ coordinator: MainCoordinator) -> UIViewController
     static func createDetailsModule(_ model: Characters?, _ coordinator: MainCoordinator) -> UIViewController
 }
 
-class MainScreenBuilder: MainAssembly {
+class MainScreenBuilder: MainAssemblyProtocol {
 
     static func createMainModule(_ coordinator: MainCoordinator) -> UIViewController {
         let view = CharactersListViewController()
